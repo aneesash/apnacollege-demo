@@ -6,7 +6,7 @@ files:
 hooks:
   AfterInstall:
     - location: scripts/install_nginx.sh
-      runas: ubuntu
+      runas: self-hosted
   ApplicationStart:
     - location: scripts/start_nginx.sh
-      runas: ubuntu
+      runas: self-hosted
