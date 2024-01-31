@@ -1,23 +1,11 @@
-name: Deploy to Local Server
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   deploy:
     runs-on: self-hosted
-
+    container:
+      image: node:14
     steps:
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Transfer files to local server
-      run: |
-        scp -r ./path/to/your/files user@your-local-server:/var/www/html
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Transfer files to local server
+        run: |
+          scp -r . root@192.168.18.34:/var/wwww/html
