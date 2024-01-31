@@ -10,15 +10,14 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Build and package
+    - name: Transfer files to local server
       run: |
-        # Add commands to build and package your application
-        # For example, npm install, build, etc.
-
-    - name: Transfer files and execute scripts
-      run: |
-        scp -r . root@192.168.18.34:/var/www/html
-        ssh root@192.168.18.34 'bash -s' < scripts/install_and_start_nginx.sh
+        scp -r ./path/to/your/files user@your-local-server:/var/www/html
